@@ -21,19 +21,8 @@ siteNav.querySelectorAll('a').forEach((link) => {
   });
 });
 
-// WHATSAPP: como no se ha definido un número, muestra un aviso en vez de abrir un chat.
-document.querySelectorAll('[data-whatsapp]').forEach((link) => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    document.querySelector('#form-status').textContent =
-      'Este prototipo académico no tiene un número de WhatsApp configurado. Puedes revisar la ficha y las fuentes del proyecto.';
-    document.querySelector('#form-status').classList.add('is-error');
-    document.querySelector('#name').focus();
-  });
-});
-
 // FORMULARIO: valida los campos y prepara un correo; no envía ni guarda información.
-// Cambia demo@ejemplo.com cuando exista una dirección real para recibir consultas.
+// El borrador se dirige al correo que aparece en la sección de contacto.
 const form = document.querySelector('#contact-form');
 const status = document.querySelector('#form-status');
 form.addEventListener('submit', (event) => {
@@ -46,13 +35,19 @@ form.addEventListener('submit', (event) => {
   const body = encodeURIComponent(
     `Nombre: ${data.get('name')}\nCorreo: ${data.get('email')}\n\n${data.get('message')}`,
   );
+  const mailto = `mailto:Yacomix@ejemplo.com?subject=${subject}&body=${body}`;
 
-  status.textContent =
-    'Abriendo tu aplicación de correo con el mensaje preparado…';
+  status.replaceChildren(
+    document.createTextNode('Si no se abrió tu aplicación de correo, '),
+  );
+  const fallbackLink = document.createElement('a');
+  fallbackLink.href = mailto;
+  fallbackLink.textContent = 'abre el borrador aquí';
+  status.append(fallbackLink, document.createTextNode('.'));
   status.classList.remove('is-error');
   status.classList.add('is-success');
   // Abre el programa de correo del visitante con el mensaje ya preparado.
-  window.location.href = `mailto:demo@ejemplo.com?subject=${subject}&body=${body}`;
+  window.location.href = mailto;
 });
 
 // FICHAS DE PRODUCTO: abre una ficha modal dentro de esta misma página.
