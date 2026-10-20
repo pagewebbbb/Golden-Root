@@ -1,0 +1,122 @@
+// JAVASCRIPT DE LA PÁGINA
+// Este archivo controla interacciones; el contenido y la apariencia se editan en HTML y CSS.
+
+// MENÚ MÓVIL: referencias a los controles del HTML para abrir y cerrar la navegación.
+const menuButton = document.querySelector('.menu-toggle');
+const siteNav = document.querySelector('.site-nav');
+
+menuButton.addEventListener('click', () => {
+  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  menuButton.setAttribute('aria-expanded', String(!isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+  siteNav.classList.toggle('is-open', !isOpen);
+});
+
+// CIERRE AUTOMÁTICO: al elegir una sección, vuelve a ocultar el menú móvil.
+siteNav.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Abrir menú');
+    siteNav.classList.remove('is-open');
+  });
+});
+
+// WHATSAPP: como no se ha definido un número, muestra un aviso en vez de abrir un chat.
+document.querySelectorAll('[data-whatsapp]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector('#form-status').textContent =
+      'Este prototipo académico no tiene un número de WhatsApp configurado. Puedes revisar la ficha y las fuentes del proyecto.';
+    document.querySelector('#form-status').classList.add('is-error');
+    document.querySelector('#name').focus();
+  });
+});
+
+// FORMULARIO: valida los campos y prepara un correo; no envía ni guarda información.
+// Cambia demo@ejemplo.com cuando exista una dirección real para recibir consultas.
+const form = document.querySelector('#contact-form');
+const status = document.querySelector('#form-status');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!form.reportValidity()) return;
+
+  const data = new FormData(form);
+  // El asunto y el cuerpo se codifican para que puedan viajar dentro del enlace mailto:.
+  const subject = encodeURIComponent(`NOMBRE — ${data.get('subject')}`);
+  const body = encodeURIComponent(
+    `Nombre: ${data.get('name')}\nCorreo: ${data.get('email')}\n\n${data.get('message')}`,
+  );
+
+  status.textContent =
+    'Abriendo tu aplicación de correo con el mensaje preparado…';
+  status.classList.remove('is-error');
+  status.classList.add('is-success');
+  // Abre el programa de correo del visitante con el mensaje ya preparado.
+  window.location.href = `mailto:demo@ejemplo.com?subject=${subject}&body=${body}`;
+});
+
+// FICHAS DE PRODUCTO: abre una ficha modal dentro de esta misma página.
+const productCards = document.querySelectorAll('[data-product-card]');
+const productDialog = document.querySelector('#product-dialog');
+const dialogImage = document.querySelector('#product-dialog-image');
+const dialogTitle = document.querySelector('#product-dialog-title');
+const dialogIntro = document.querySelector('#product-dialog-intro');
+const dialogWeight = document.querySelector('#product-dialog-weight');
+const dialogUse = document.querySelector('#product-dialog-use');
+const dialogContact = document.querySelector('#product-dialog-contact');
+const closeDialogButton = document.querySelector('.product-dialog-close');
+const productDetails = [
+  {
+    title: 'Jarabe de yacón · 250 g',
+    image: 'assets/images/jarabe-yacon-250gr.jpg',
+    weight: '250 g (según la imagen de referencia)',
+    intro: 'Una presentación compacta de la propuesta de jarabe de yacón.',
+    use: 'Formato sugerido para probarlo en preparaciones cotidianas; seguir las instrucciones del envase final.',
+    alt: 'Imagen de referencia del jarabe de yacón de 250 gramos',
+  },
+  {
+    title: 'Jarabe de yacón · 500 g',
+    image: 'assets/images/jarabe-yacon-500gr.jpg',
+    weight: '500 g (según la imagen de referencia)',
+    intro: 'La presentación de mayor contenido de la línea conceptual de jarabe.',
+    use: 'Formato sugerido para compartir; usos e indicaciones por confirmar con el fabricante.',
+    alt: 'Imagen de referencia del jarabe de yacón de 500 gramos',
+  },
+  {
+    title: 'Harina de yacón · 250 g',
+    image: 'assets/images/harina-yacon-250gr.jpg',
+    weight: '250 g (según la imagen de referencia)',
+    intro: 'Una propuesta complementaria de harina de yacón para explorar la línea de productos.',
+    use: 'Uso culinario por definir de acuerdo con las instrucciones del fabricante.',
+    alt: 'Imagen de referencia de harina de yacón de 250 gramos',
+  },
+];
+
+function openProductDialog(card) {
+  const product = productDetails[Number(card.dataset.productCard)];
+  if (!product) return;
+  dialogTitle.textContent = product.title;
+  dialogImage.src = product.image;
+  dialogImage.alt = product.alt;
+  dialogIntro.textContent = product.intro;
+  dialogWeight.textContent = product.weight;
+  dialogUse.textContent = product.use;
+  productDialog.showModal();
+  closeDialogButton.focus();
+}
+
+productCards.forEach((card) => {
+  card.addEventListener('click', () => openProductDialog(card));
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openProductDialog(card);
+    }
+  });
+});
+
+closeDialogButton.addEventListener('click', () => productDialog.close());
+productDialog.addEventListener('click', (event) => {
+  if (event.target === productDialog) productDialog.close();
+});
+dialogContact.addEventListener('click', () => productDialog.close());
