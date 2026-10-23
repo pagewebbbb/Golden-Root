@@ -63,7 +63,7 @@ const closeDialogButton = document.querySelector('.product-dialog-close');
 const productDetails = [
   {
     title: 'Jarabe de yacón · 250 g',
-    image: '',
+    image: 'assets/images/sirope-yacon-250.jpeg',
     weight: '250 g (según la imagen de referencia)',
     intro: 'Una presentación compacta de la propuesta de jarabe de yacón.',
     use: 'Formato sugerido para probarlo en preparaciones cotidianas; seguir las instrucciones del envase final.',
@@ -71,7 +71,7 @@ const productDetails = [
   },
   {
     title: 'Jarabe de yacón · 500 g',
-    image: 'assets/images/sirope-yacon.jpeg',
+    image: 'assets/images/sirope-yacon-500.jpeg',
     weight: '500 g (según la imagen de referencia)',
     intro: 'La presentación de mayor contenido de la línea conceptual de jarabe.',
     use: 'Formato sugerido para compartir; usos e indicaciones por confirmar con el fabricante.',
@@ -79,7 +79,7 @@ const productDetails = [
   },
   {
     title: 'Harina de yacón · 250 g',
-    image: 'assets/images/Polvo-Yacon.jpeg',
+    image: 'assets/images/polvo-yacon-1.jpeg',
     weight: '250 g (según la imagen de referencia)',
     intro: 'Una propuesta complementaria de harina de yacón para explorar la línea de productos.',
     use: 'Uso culinario por definir de acuerdo con las instrucciones del fabricante.',
