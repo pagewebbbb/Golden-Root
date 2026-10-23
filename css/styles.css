@@ -3705,3 +3705,49 @@ h3,
     margin-top: 24px;
   }
 }
+
+/* CONTENCIÓN DE IMÁGENES: evita que sus dimensiones naturales desborden la cuadrícula. */
+.use-heading,
+.use-heading-copy,
+.use-heading-visual,
+.contact-section > *,
+.contact-intro,
+.contact-image {
+  min-width: 0;
+}
+
+.use-heading-visual,
+.contact-image {
+  width: 100%;
+}
+
+.use-heading-visual {
+  max-width: 100%;
+}
+
+.use-heading-visual img,
+.contact-image img {
+  max-width: 100%;
+}
+
+@media (min-width: 761px) {
+  .use-heading-visual {
+    height: clamp(210px, 22vw, 300px);
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-image {
+    max-width: 400px;
+  }
+}
+
+.contact-image {
+  max-width: 390px;
+}
+
+@media (max-width: 760px) {
+  .contact-image {
+    max-width: 400px;
+  }
+}
