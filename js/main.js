@@ -63,7 +63,7 @@ const closeDialogButton = document.querySelector('.product-dialog-close');
 const productDetails = [
   {
     title: 'Jarabe de yacón · 250 g',
-    image: 'assets/images/jarabe-yacon-250gr.jpg',
+    image: '',
     weight: '250 g (según la imagen de referencia)',
     intro: 'Una presentación compacta de la propuesta de jarabe de yacón.',
     use: 'Formato sugerido para probarlo en preparaciones cotidianas; seguir las instrucciones del envase final.',
@@ -71,7 +71,7 @@ const productDetails = [
   },
   {
     title: 'Jarabe de yacón · 500 g',
-    image: 'assets/images/jarabe-yacon-500gr.jpg',
+    image: 'assets/images/sirope-yacon.jpeg',
     weight: '500 g (según la imagen de referencia)',
     intro: 'La presentación de mayor contenido de la línea conceptual de jarabe.',
     use: 'Formato sugerido para compartir; usos e indicaciones por confirmar con el fabricante.',
@@ -79,7 +79,7 @@ const productDetails = [
   },
   {
     title: 'Harina de yacón · 250 g',
-    image: 'assets/images/harina-yacon-250gr.jpg',
+    image: 'assets/images/Polvo-Yacon.jpeg',
     weight: '250 g (según la imagen de referencia)',
     intro: 'Una propuesta complementaria de harina de yacón para explorar la línea de productos.',
     use: 'Uso culinario por definir de acuerdo con las instrucciones del fabricante.',
@@ -91,7 +91,9 @@ function openProductDialog(card) {
   const product = productDetails[Number(card.dataset.productCard)];
   if (!product) return;
   dialogTitle.textContent = product.title;
-  dialogImage.src = product.image;
+  dialogImage.closest('.product-dialog-image').hidden = !product.image;
+  dialogImage.removeAttribute('src');
+  if (product.image) dialogImage.src = product.image;
   dialogImage.alt = product.alt;
   dialogIntro.textContent = product.intro;
   dialogWeight.textContent = product.weight;
