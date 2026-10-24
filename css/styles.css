@@ -3974,3 +3974,1169 @@ h3,
 .process-section .process-disclaimer {
   opacity: .8;
 }
+
+/* PORTADA ACTUALIZADA: video a color, marca a la izquierda y resumen a la derecha. */
+.hero-video {
+  min-height: calc(100svh - 82px);
+  padding: 48px clamp(24px, 7vw, 112px);
+  display: block;
+  background: #17291f;
+  color: #fff;
+  text-align: left;
+}
+
+.hero-background {
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  filter: none;
+}
+
+.hero-video .hero-overlay {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgb(0 0 0 / 12%);
+  pointer-events: none;
+}
+
+.hero-video .hero-copy,
+.hero-video .hero-about {
+  z-index: 1;
+}
+
+.hero-video .hero-copy {
+  position: absolute;
+  top: 50%;
+  left: clamp(24px, 7vw, 112px);
+  width: min(34%, 460px);
+  margin: 0;
+  transform: translateY(-50%);
+  text-align: left;
+  animation: none;
+}
+
+.hero-video h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(44px, 6vw, 78px);
+  line-height: 1.02;
+  letter-spacing: .005em;
+  text-align: left;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 22%);
+}
+
+.hero-product {
+  margin: 12px 0 0;
+  color: #fff;
+  font-size: clamp(14px, 1.5vw, 19px);
+  letter-spacing: .18em;
+  text-align: left;
+  text-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+}
+
+.hero-slogan {
+  max-width: 390px;
+  margin: 20px 0 0;
+  color: #fff;
+  font-size: clamp(21px, 2.3vw, 31px);
+  line-height: 1.25;
+  text-align: left;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 28%);
+}
+
+.hero-slogan em {
+  color: inherit;
+}
+
+.hero-about {
+  position: absolute;
+  right: clamp(24px, 7vw, 112px);
+  bottom: clamp(24px, 5vh, 58px);
+  width: min(31%, 420px);
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 2px 15px rgb(0 0 0 / 68%), 0 5px 26px rgb(0 0 0 / 32%);
+}
+
+.hero-about h2 {
+  margin: 0 0 7px;
+  color: inherit;
+  font: 700 clamp(16px, 1.7vw, 22px)/1.25 var(--sans);
+}
+
+.hero-about p {
+  margin: 0;
+  font-size: clamp(12px, 1.15vw, 15px);
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .hero-video {
+    min-height: max(680px, calc(100svh - 72px));
+    padding: 32px 22px;
+  }
+
+  .hero-video .hero-copy {
+    top: 38%;
+    left: 22px;
+    width: min(78%, 430px);
+    transform: translateY(-50%);
+    text-align: left;
+  }
+
+  .hero-video h1 {
+    font-size: clamp(42px, 11vw, 66px);
+    text-align: left;
+    overflow-wrap: normal;
+  }
+
+  .hero-product {
+    font-size: 13px;
+    text-align: left;
+  }
+
+  .hero-slogan {
+    margin: 17px 0 0;
+    font-size: clamp(20px, 5.5vw, 27px);
+    text-align: left;
+  }
+
+  .hero-about {
+    right: 22px;
+    bottom: 26px;
+    width: min(83%, 430px);
+  }
+}
+
+/* LOGO Y RESUMEN DE PORTADA: logo rectangular a la izquierda, presentación arriba a la derecha. */
+.hero-video .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero-logo {
+  display: block;
+  width: min(100%, 500px);
+  height: auto;
+  margin: 0 0 20px;
+  object-fit: contain;
+  object-position: left center;
+  filter: drop-shadow(0 0 5px rgb(255 255 255 / 88%)) drop-shadow(0 0 13px rgb(255 255 255 / 62%)) drop-shadow(0 0 24px rgb(255 255 255 / 32%));
+}
+
+.hero-video .hero-slogan {
+  width: max-content;
+  max-width: 100%;
+  margin: 20px auto 0;
+  color: #fffaf0;
+  text-align: left;
+}
+
+.hero-video .hero-slogan em {
+  color: #e0bd83;
+}
+
+.hero-video .hero-about {
+  top: clamp(14px, 3.5vh, 38px);
+  right: clamp(18px, 3vw, 48px);
+  bottom: auto;
+  width: min(28%, 380px);
+}
+
+@media (max-width: 760px) {
+  .hero-logo {
+    width: min(100%, 400px);
+    margin-bottom: 16px;
+  }
+
+  .hero-video .hero-about {
+    top: 56%;
+    right: 22px;
+    bottom: auto;
+    width: min(78%, 390px);
+  }
+}
+
+/* CATÁLOGO REORDENADO: introducción a la izquierda y productos compactos a la derecha. */
+.section-products {
+  display: grid;
+  grid-template-columns: minmax(220px, .78fr) minmax(0, 2.2fr);
+  column-gap: clamp(28px, 4vw, 62px);
+  row-gap: 24px;
+  align-items: center;
+  background: #fff;
+  color: var(--ink);
+}
+
+.section-products .section-heading.catalog-intro {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: block;
+  margin: 0;
+}
+
+.catalog-intro h2 {
+  margin: 0 0 22px !important;
+  color: var(--green) !important;
+  font-size: clamp(38px, 4vw, 54px) !important;
+  line-height: 1.05;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+.catalog-intro h2 em {
+  color: var(--brown) !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+.catalog-intro h3 {
+  margin: 0 0 12px;
+  color: var(--green);
+  font: 700 clamp(19px, 1.8vw, 24px)/1.3 var(--sans);
+}
+
+.catalog-intro p {
+  max-width: 360px;
+  margin: 0;
+  color: #62695f !important;
+  font-size: 15px;
+  font-weight: 400 !important;
+  line-height: 1.75;
+  text-shadow: none !important;
+}
+
+.section-products .product-grid {
+  grid-column: 2;
+  grid-row: 1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 20px);
+  align-self: end;
+}
+
+.section-products .product-card {
+  min-width: 0;
+  box-shadow: 0 8px 24px rgb(22 39 29 / 9%);
+}
+
+.section-products .product-visual {
+  height: clamp(155px, 17vw, 220px);
+}
+
+.section-products .product-info {
+  min-height: 126px;
+  padding: 15px 15px 18px;
+}
+
+.section-products .product-tag {
+  font-size: 7px;
+}
+
+.section-products .product-info h3 {
+  font-size: clamp(16px, 1.4vw, 19px);
+}
+
+.section-products .product-info p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.section-products .center-link {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  margin: 0;
+}
+
+.section-products .text-link {
+  color: var(--green);
+  border-color: #9aa397;
+}
+
+.section-products .text-link:hover {
+  color: var(--brown);
+  border-color: var(--brown);
+}
+
+@media (max-width: 980px) {
+  .section-products {
+    grid-template-columns: minmax(200px, .75fr) minmax(0, 1.8fr);
+    padding-inline: clamp(24px, 5vw, 54px);
+    column-gap: 26px;
+  }
+
+  .section-products .product-grid {
+    gap: 10px;
+  }
+
+  .section-products .product-info {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-products {
+    display: block;
+    padding: 72px 23px;
+  }
+
+  .section-products .section-heading.catalog-intro {
+    margin-bottom: 30px;
+  }
+
+  .catalog-intro h2 {
+    font-size: 43px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .catalog-intro h3 {
+    font-size: 20px;
+  }
+
+  .catalog-intro p {
+    font-size: 14px;
+  }
+
+  .section-products .product-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .section-products .product-visual {
+    height: 220px;
+  }
+
+  .section-products .product-info {
+    min-height: 116px;
+  }
+
+  .section-products .center-link {
+    margin-top: 24px;
+  }
+}
+
+/* AJUSTE DE CATÁLOGO: tono crema y tarjetas más amplias en altura y lectura. */
+.section-products {
+  background: #f3f0e7;
+}
+
+.section-products .product-visual {
+  height: clamp(245px, 23vw, 300px);
+}
+
+.section-products .product-info {
+  min-height: 172px;
+  padding: 20px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.section-products .product-info h3 {
+  margin: 0 0 12px;
+  font-size: clamp(17px, 1.55vw, 21px);
+  line-height: 1.3;
+}
+
+.section-products .product-info p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.product-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 17px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
+.product-view-link > span {
+  transition: transform .2s ease;
+}
+
+.product-card:hover .product-view-link > span,
+.product-card:focus-visible .product-view-link > span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 980px) {
+  .section-products .product-visual {
+    height: 250px;
+  }
+
+  .section-products .product-info {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 760px) {
+  .section-products .product-visual {
+    height: 270px;
+  }
+
+  .section-products .product-info {
+    min-height: 160px;
+    padding: 20px;
+  }
+}
+
+/* ALINEACIÓN DEL CATÁLOGO: la introducción comienza a la altura de las tarjetas. */
+.section-products .section-heading.catalog-intro {
+  grid-row: 1;
+  align-self: start;
+}
+
+.section-products .product-grid {
+  align-self: start;
+}
+
+/* ENVASE DE 250 G: mostrar la foto vertical completa dentro de su marco. */
+.section-products .product-card[data-product-card="0"] .product-visual {
+  background: #eee9dc;
+}
+
+.section-products .product-card[data-product-card="0"] .product-visual img {
+  object-fit: contain;
+  object-position: center;
+  padding: 14px;
+}
+
+/* PORTADA EN UNA COLUMNA: marca arriba y Quiénes somos separado debajo. */
+.hero-video .hero-copy {
+  top: clamp(28px, 5vh, 58px);
+  left: clamp(24px, 7vw, 112px);
+  width: min(40%, 520px);
+  transform: none;
+}
+
+.hero-video .hero-about {
+  position: static;
+  width: min(100%, 470px);
+  margin-top: clamp(30px, 4vh, 46px);
+  padding-top: 19px;
+  border-top: 1px solid rgb(255 255 255 / 72%);
+  text-align: left;
+}
+
+.hero-video .hero-about h2 {
+  margin-bottom: 7px;
+}
+
+@media (max-width: 760px) {
+  .hero-video .hero-copy {
+    top: 28px;
+    left: 22px;
+    width: min(88%, 450px);
+    transform: none;
+  }
+
+  .hero-video .hero-about {
+    width: 100%;
+    margin-top: 28px;
+    padding-top: 15px;
+  }
+}
+
+/* PORTADA: centra el bloque de marca y separa más el resumen inferior. */
+.hero-video .hero-copy {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-video .hero-about {
+  margin-top: clamp(42px, 6vh, 64px);
+  padding-top: 22px;
+}
+
+@media (max-width: 760px) {
+  .hero-video .hero-copy {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero-video .hero-about {
+    margin-top: 38px;
+    padding-top: 18px;
+  }
+}
+
+/* CONTRASTE DE TEXTOS EN PORTADA: sombras difusas sobre el video. */
+.hero-video .hero-slogan {
+  text-shadow:
+    0 2px 5px rgb(0 0 0 / 78%),
+    0 0 16px rgb(0 0 0 / 62%),
+    0 5px 24px rgb(0 0 0 / 48%);
+}
+
+.hero-video .hero-slogan em {
+  text-shadow:
+    0 2px 5px rgb(0 0 0 / 82%),
+    0 0 16px rgb(0 0 0 / 68%),
+    0 4px 24px rgb(0 0 0 / 52%);
+}
+
+.hero-video .hero-about {
+  text-shadow:
+    0 1px 5px rgb(0 0 0 / 88%),
+    0 0 17px rgb(0 0 0 / 78%),
+    0 5px 27px rgb(0 0 0 / 58%);
+}
+
+/* NOSOTROS: presentación de Cajamarca al mundo con el mapa centrado y objetivo lateral. */
+.origin-section.origin-export {
+  display: grid;
+  grid-template-columns: minmax(230px, .9fr) minmax(350px, 1.55fr) minmax(230px, .9fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 46px);
+  min-height: 0;
+  padding: clamp(55px, 7vw, 96px) clamp(26px, 6vw, 92px);
+  overflow: hidden;
+  background: #123522;
+  color: #f8f4e9;
+  position: relative;
+}
+
+.origin-export-intro,
+.origin-export-objective {
+  position: relative;
+  z-index: 1;
+}
+
+.origin-export-kicker {
+  display: block;
+  margin-bottom: 16px;
+  color: #dfbd70;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .2em;
+}
+
+.origin-export-intro h2 {
+  margin: 0 0 18px;
+  color: #f8f4e9;
+  font: 700 clamp(30px, 3vw, 43px)/1.13 var(--serif);
+}
+
+.origin-export-intro p {
+  margin: 0;
+  max-width: 430px;
+  color: #e6e7db;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.8;
+}
+
+.origin-export-map {
+  min-width: 0;
+  display: grid;
+  place-items: center;
+}
+
+.origin-export-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+.origin-export-objective {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: clamp(20px, 2.5vw, 38px);
+  border-left: 1px solid rgb(223 189 112 / 55%);
+}
+
+.origin-export-objective .origin-export-kicker {
+  margin-bottom: 12px;
+}
+
+.origin-export-objective h3 {
+  margin: 0 0 12px;
+  color: #f8f4e9;
+  font: 700 clamp(19px, 1.6vw, 24px)/1.3 var(--serif);
+}
+
+.origin-export-objective p {
+  margin: 0;
+  color: #e0e5db;
+  font-size: clamp(12px, .95vw, 14px);
+  line-height: 1.75;
+}
+
+@media (max-width: 1050px) {
+  .origin-section.origin-export {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  }
+
+  .origin-export-map {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: 760px;
+    justify-self: center;
+  }
+
+  .origin-export-objective {
+    grid-column: 2;
+    grid-row: 1;
+    border-left: 1px solid rgb(223 189 112 / 55%);
+  }
+}
+
+@media (max-width: 680px) {
+  .origin-section.origin-export {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 62px 24px;
+  }
+
+  .origin-export-intro h2 {
+    font-size: 34px;
+  }
+
+  .origin-export-map {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .origin-export-objective {
+    grid-column: 1;
+    grid-row: 3;
+    border-top: 1px solid rgb(223 189 112 / 55%);
+    border-left: 0;
+    padding: 22px 0 0;
+  }
+}
+
+/* MAPA PNG: usar sus píxeles dorados sobre el fondo de la sección sin mezcla de color. */
+.origin-export-map img {
+  mix-blend-mode: normal;
+}
+
+/* MAPA CENTRAL: ocupa más espacio sin deformar su proporción. */
+.origin-export-map {
+  transform: scale(1.12);
+}
+
+@media (max-width: 1050px) {
+  .origin-export-map {
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 680px) {
+  .origin-export-map {
+    transform: scale(1.03);
+  }
+}
+
+/* HISTORIA Y PROPUESTA: cuatro atributos con iconos de trazo fino. */
+.yacon-info-copy .eyebrow {
+  color: #986c43;
+}
+
+.yacon-info-copy h2 {
+  font-size: clamp(36px, 4.2vw, 54px);
+  line-height: 1.12;
+}
+
+.yacon-info-intro {
+  margin-bottom: 28px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.yacon-facts {
+  border-top: 1px solid #cbc6b7;
+}
+
+.yacon-facts article {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+}
+
+.yacon-fact-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  color: #82703c;
+}
+
+.yacon-fact-icon svg {
+  display: block;
+  width: 34px;
+  height: 34px;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.yacon-facts article h3 {
+  margin: 0 0 3px;
+  color: var(--green-dark);
+  font: 700 16px/1.35 var(--serif);
+}
+
+.yacon-facts article p {
+  margin: 0;
+  color: #62695f;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .yacon-info-copy h2 {
+    font-size: 40px;
+  }
+
+  .yacon-info-intro {
+    font-size: 15px;
+  }
+
+  .yacon-facts article h3 {
+    font-size: 15px;
+  }
+}
+
+/* HISTORIA DEL YACÓN: fotografía a la izquierda e información a la derecha. */
+.yacon-info-section {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+}
+
+.yacon-info-visual {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.yacon-info-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+@media (max-width: 760px) {
+  .yacon-info-section {
+    grid-template-columns: 1fr;
+  }
+
+  .yacon-info-visual {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .yacon-info-copy {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+/* PROCESO LINEAL: cuatro etapas horizontales con iconos circulares en vez de fotos. */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2.2vw, 34px);
+  padding: 8px 0 0;
+  border: 0;
+}
+
+.process-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19px;
+  min-width: 0;
+  min-height: 0;
+  padding: 0 12px 10px;
+  border: 0 !important;
+  background: transparent;
+}
+
+.process-step:not(:last-child) {
+  margin: 0;
+}
+
+.process-image {
+  display: none;
+}
+
+.process-icon {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 88px;
+  place-items: center;
+  border: 1.5px solid #dfbd70;
+  border-radius: 50%;
+  color: #dfbd70;
+}
+
+.process-icon svg {
+  width: 43px;
+  height: 43px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.process-step:not(:last-child)::after {
+  content: "›";
+  position: absolute;
+  top: 22px;
+  right: -22px;
+  color: #dfbd70;
+  font: 400 38px/1 var(--sans);
+}
+
+.process-copy {
+  padding: 0;
+}
+
+.process-step h3 {
+  margin: 4px 0 10px;
+  font-size: clamp(20px, 2vw, 28px);
+}
+
+.process-step p {
+  margin: 0;
+  font-size: clamp(13px, 1.05vw, 15px);
+  line-height: 1.7;
+}
+
+.step-index {
+  color: #dfbd70;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+@media (max-width: 980px) {
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 38px 26px;
+  }
+
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+
+  .process-step {
+    padding: 0 8px 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .process-step {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 0 0 23px;
+    border-bottom: 1px solid rgb(255 253 247 / 28%) !important;
+  }
+
+  .process-step:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .process-icon {
+    width: 66px;
+    height: 66px;
+    flex-basis: 66px;
+  }
+
+  .process-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .process-step h3 {
+    margin-top: 4px;
+    font-size: 22px;
+  }
+
+  .process-step p {
+    font-size: 14px;
+  }
+}
+
+/* CONTRASTE DEL PROCESO: sombras oscuras y etiquetas de etapa más visibles. */
+.process-section .process-step h3,
+.process-section .process-step p,
+.process-section .step-index {
+  text-shadow:
+    0 1px 4px rgb(0 0 0 / 88%),
+    0 0 12px rgb(0 0 0 / 74%),
+    0 3px 20px rgb(0 0 0 / 55%);
+}
+
+.process-section .step-index {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: .16em;
+  font-weight: 800;
+}
+
+.process-section .process-icon {
+  background: #fffdf7;
+  border-color: #fffdf7;
+  color: #82703c;
+  box-shadow: 0 4px 18px rgb(0 0 0 / 22%);
+}
+
+.process-section .process-step:not(:last-child)::after {
+  text-shadow: 0 1px 8px rgb(0 0 0 / 80%);
+}
+
+@media (max-width: 760px) {
+  .process-section .step-index {
+    font-size: 12px;
+  }
+}
+
+/* ICONOS DEL PROCESO: círculos mayores y centrados sobre el texto de cada etapa. */
+.process-step {
+  align-items: center;
+  text-align: center;
+}
+
+.process-section .process-icon {
+  width: 112px;
+  height: 112px;
+  flex-basis: 112px;
+  margin-inline: auto;
+}
+
+.process-section .process-icon svg {
+  width: 58px;
+  height: 58px;
+}
+
+.process-section .process-copy {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 980px) {
+  .process-section .process-icon {
+    width: 104px;
+    height: 104px;
+    flex-basis: 104px;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-section .process-step {
+    align-items: center;
+    text-align: left;
+  }
+
+  .process-section .process-icon {
+    width: 76px;
+    height: 76px;
+    flex-basis: 76px;
+    margin: 0;
+  }
+
+  .process-section .process-icon svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .process-section .process-copy {
+    text-align: left;
+  }
+}
+
+/* CALIDAD Y TRAZABILIDAD: foto a la izquierda con fundido hacia el verde. */
+.quality-section {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(230px, .85fr) minmax(340px, 1.35fr) minmax(230px, .9fr);
+  align-items: center;
+  gap: clamp(24px, 3vw, 46px);
+  min-height: 400px;
+  overflow: hidden;
+  padding: 52px clamp(26px, 6vw, 92px);
+  background: #10271d;
+  color: #f8f4e9;
+}
+
+.quality-photo {
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 0;
+  width: 39%;
+  overflow: hidden;
+}
+
+.quality-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(16 39 29 / 0%) 34%, rgb(16 39 29 / 52%) 68%, #10271d 100%);
+}
+
+.quality-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.quality-copy {
+  grid-column: 2;
+  position: relative;
+  z-index: 1;
+}
+
+.quality-kicker {
+  display: block;
+  margin-bottom: 13px;
+  color: #dfbd70;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 85%);
+}
+
+.quality-copy h2 {
+  margin: 0 0 15px;
+  color: #f8f4e9;
+  font: 700 clamp(29px, 3vw, 42px)/1.15 var(--serif);
+  text-shadow: 0 2px 8px rgb(0 0 0 / 82%), 0 0 18px rgb(0 0 0 / 68%);
+}
+
+.quality-copy p {
+  margin: 0;
+  color: #e7e8df;
+  font-size: 15px;
+  line-height: 1.7;
+  text-shadow: 0 1px 6px rgb(0 0 0 / 80%);
+}
+
+.quality-points {
+  grid-column: 3;
+  display: grid;
+  gap: 17px;
+  margin: 0;
+  padding: 4px 0 4px clamp(20px, 2.4vw, 36px);
+  border-left: 1px solid rgb(223 189 112 / 58%);
+  list-style: none;
+}
+
+.quality-points li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #f3f0e7;
+  font-size: 13px;
+  line-height: 1.45;
+  text-shadow: 0 1px 7px rgb(0 0 0 / 85%);
+}
+
+.quality-points li > span {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  color: #dfbd70;
+}
+
+.quality-points svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 1020px) {
+  .quality-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 30px;
+  }
+
+  .quality-photo {
+    width: 47%;
+  }
+
+  .quality-copy {
+    grid-column: 2;
+  }
+
+  .quality-points {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 18px 0 0;
+    border-top: 1px solid rgb(223 189 112 / 45%);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .quality-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 265px 24px 54px;
+  }
+
+  .quality-photo {
+    width: 100%;
+    height: 300px;
+    bottom: auto;
+  }
+
+  .quality-photo::after {
+    background: linear-gradient(180deg, rgb(16 39 29 / 0%) 42%, rgb(16 39 29 / 50%) 70%, #10271d 100%);
+  }
+
+  .quality-copy,
+  .quality-points {
+    grid-column: 1;
+  }
+
+  .quality-points {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SIN IMAGEN DECORATIVA EN RECETAS: el texto ocupa el ancho disponible. */
+.use-heading {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.use-heading-copy {
+  max-width: 820px;
+}
