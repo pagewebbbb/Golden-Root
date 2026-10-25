@@ -21,6 +21,13 @@ siteNav.querySelectorAll('a').forEach((link) => {
   });
 });
 
+// ENLACES COMERCIALES: al ir al formulario, selecciona el tema relacionado con el botón elegido.
+const contactSubject = document.querySelector('#subject');
+document.querySelectorAll('[data-contact-subject]').forEach((link) => {
+  link.addEventListener('click', () => {
+    contactSubject.value = link.dataset.contactSubject;
+  });
+});
 // FORMULARIO: valida los campos y prepara un correo; no envía ni guarda información.
 // El borrador se dirige al correo que aparece en la sección de contacto.
 const form = document.querySelector('#contact-form');
@@ -81,7 +88,7 @@ const productDetails = [
     title: 'Polvo de yacón · 500 g',
     image: 'assets/images/polvo-yacon-1.jpeg',
     weight: '500 g (según la imagen de referencia)',
-    intro: 'Una presentación versátil para...',
+    intro: 'Una presentación versátil para distintas preparaciones.',
     use: 'Uso culinario por definir de acuerdo con las instrucciones del fabricante.',
     alt: 'Imagen de referencia de polvo de yacón de 500 gramos',
   },
